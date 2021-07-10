@@ -1,1 +1,65 @@
-<h1>Welcome!</h1>
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
+  <a class="navbar-brand" [routerLink]="['/']">{{ title }}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/home']">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/about']">About</a>
+      </li>
+    </ul>
+    <span class="navbar-text">{{ username }}</span>
+  </div>
+</nav>
+
+<!-- sidebar -->
+<div id="container-sidebar" class="sidebar">
+  <ul class="list-group">
+    <li [routerLinkActive]="['active']" class="list-group-item list-group-item-action list-group-item-dark">
+      <a [routerLink]="['/dashboard']"><i class="fa fa-th-large fa-fw mr-3"></i><span>Dashboard</span></a>
+    </li>
+    <li [routerLinkActive]="['active']" class="list-group-item list-group-item-action list-group-item-dark">
+      <a [routerLink]="['/email']"><i class="fa fa-envelope-o fa-fw mr-3"></i><span>Email</span></a>
+    </li>
+    <li [routerLinkActive]="['active']" class="list-group-item list-group-item-action list-group-item-dark">
+      <a [routerLink]="['/calendar']"><i class="fa fa-calendar fa-fw mr-3"></i><span>Calendar</span></a>
+    </li>
+
+    <li class="list-group-item list-group-item-action list-group-item-dark" data-toggle="collapse" data-target="#submenu-management" aria-expanded="false">
+      <a><i class="fa fa-id-card-o fa-fw mr-3"></i><span>Management</span><span class="submenu-icon"></span></a>
+    </li>
+    <div id="submenu-management" class="collapse">
+      <li [routerLinkActive]="['active']" class="list-group-item list-group-item-action list-group-item-dark">
+        <a [routerLink]="['/users']"><i class="fa fa-users fa-fw mr-3"></i><span>Users</span></a>
+      </li>
+      <li [routerLinkActive]="['active']" class="list-group-item list-group-item-action list-group-item-dark">
+        <a [routerLink]="['/roles']"><i class="fa fa-tasks fa-fw mr-3"></i><span>Roles</span></a>
+      </li>
+    </div>
+
+    <li [routerLinkActive]="['active']" class="list-group-item list-group-item-action list-group-item-dark">
+      <a [routerLink]="['/settings']"><i class="fa fa-cog fa-fw mr-3"></i><span>Settings</span></a>
+    </li>
+
+    <li class="list-group-item list-group-item-action list-group-item-dark">
+      <a (click)="toggleSidebar()"><i class="fa fa-chevron-left fa-fw mr-3" id="collapse-icon"></i><span>Collapse</span></a>
+    </li>
+  </ul>
+</div>
+
+<!-- body -->
+<div id="container-body">
+  <div class="container-fluid">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<!-- footer -->
+<div class="footer col-lg bg-info">
+  <footer>&copy; Copyright 2020</footer>
+</div>
